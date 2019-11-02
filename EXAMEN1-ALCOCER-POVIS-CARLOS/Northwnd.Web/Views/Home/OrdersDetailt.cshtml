@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "OrdersDetailt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <!--
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>-->
+            <li class="active">Confirmación de pedidos</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <form id="FrmComent" method="post" autocomplete="off" role="form" data-toggle="validator">
+                    <input type="hidden" id="hin_OrderID" name="hin_OrderID" value="@ViewBag.Orders.OrderID" />
+                    <label class="col-sm-12 control-label no-padding-right" style="font-size:20px;" for=""><b>PEDIDOS @ViewBag.Orders.OrderID - @ViewBag.Orders.CompanyName</b></label>
+                    <div class="row">
+                        <div class="col-sm-12 input">
+                            <div id="dataTables_wrapper" class="dataTables_wrapper form-inline no-footer">
+                                <div class="dt-toolbar"></div>
+                                <div class="table-responsive" style="padding-left:10px;padding-right:10px;">
+                                    <table id="TOrders" class="table table-striped table-bordered no-footer" style="width:100%;font-size:12px;" role="grid" aria-describedby="dataTables_info">
+                                        <thead>
+                                            <tr>
+                                                <th width="1%" style="font-size:10px;text-align:center">Codigo</th>
+                                                <th width="20%" style="font-size:10px;">Descripción</th>
+                                                <th width="3%" style="font-size:10px;text-align:center;">Cantidad</th>
+                                                <th width="3%" style="font-size:10px;text-align:center;">Precio</th>
+                                                <th width="3%" style="font-size:10px; text-align:center;">Total</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                if (ViewBag.OrdersDetailt != null)
+                                                {
+                                                    if (ViewBag.OrdersDetailt.Count > 0)
+                                                    {
+
+                                                        foreach (var item in ViewBag.OrdersDetailt)
+                                                        {
+                                                            <tr>
+                                                                <td style="text-align:center">@item.ProductID</td>
+                                                                <td> @item.ProductName</td>
+                                                                <td style="text-align:center">@item.Quantity</td>
+                                                                <td style="text-align:center">@item.UnitPrice</td>
+                                                                <td style="text-align:center">@item.TotalPrice</td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="col-sm-12">
+                                        <div class="input-group date" id="dv_calendar_filter">
+                                            <input type="text" id="txt_Confirmation_date" name="txt_Confirmation_date" class="form-control input-sm" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="checkbox" style="vertical-align: middle; margin-top:0px;margin-bottom:0px;">
+                                        <label>
+                                            <input id="check_Confirmation" name="check_Confirmation" type="checkbox" class="ace">
+                                            <span class="lbl">Confirmado</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="col-sm-3 control-label no-padding-right small" for=""><b>Total</b></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="txt_TotalPrice" name="txt_TotalPrice" class="form-control" value="@ViewBag.TotalPrice" readonly />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="space-4"></div>
+                        <br />
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-12 control-label no-padding-right small" for=""><b>Comentario</b></label>
+                                    <div class="col-sm-12">
+                                        <textarea rows="5" id="txt_comment" name="txt_comment" class="form-control" style="font-size:10px;"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-6" style="text-align:center;">
+                                <button type="submit" id="btnGuardar" class="btn btn-sm btn-success">
+                                    <i class="fa fa-remover"></i> Guardar
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+
+                </form>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#dv_calendar_filter').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            language: 'es',
+            weekStart: 1,
+            daysOfWeekHighlighted: "0",
+            todayHighlight: true
+        }).datepicker("setDate", new Date());
+
+
+
+        function Guardar() {
+            var oBE = {};
+            oBE.OrderID = $("#hin_OrderID").val();
+            oBE.Confirmation_date = $("#txt_Confirmation_date").val();
+            oBE.Confirmation = (document.getElementById("check_Confirmation").checked == true) ? 1 : 0;
+            oBE.comment = $("#txt_comment").val();
+
+            $.ajax({
+                url: '/Home/GuardarComentario',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                processData: true,
+                data: JSON.stringify(oBE),
+                beforeSend(xhr) {
+
+                },
+                success: function (response) {
+                    try {
+                       
+                        if (response.result > 0) {
+                            alert("Se registro correctamente");
+                            location.href = "/Home";
+                        }
+                    }
+                    catch (e) {
+                        //   $.unblockUI();
+                    }
+
+                },
+                failure: function (msg) {
+                    console.log(msg);
+                    // $.unblockUI();
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                    //   $.unblockUI();
+                },
+                complete: function () {
+                    //$.unblockUI();
+                    //$("#prueba").dialog("close")
+                }
+            });
+
+        }
+
+        Validacion();
+        function Validacion() {
+            $("#FrmComent").bootstrapValidator({
+                container: 'tooltip',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                excluded: [':disabled'],
+                fields: {
+                    txt_Confirmation_date: {
+                        validators: {
+                            notEmpty: { message: "Ingrese una fecha" }
+                        }
+                    },
+                    txt_comment: {
+                        validators: {
+                            notEmpty: { message: "Ingresed un comentario" }
+                        }
+                    } 
+                     
+
+
+                }
+            })
+                .on('error.field.bv', function (e, data) {
+                    // Get the tooltip
+                    var $parent = data.element.parents('.form-group'),
+                        $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]'),
+                        title = $icon.data('bs.tooltip').getTitle();
+                    // Destroy the old tooltip and create a new one positioned to the right
+
+                    $icon.tooltip('destroy').tooltip({
+                        html: true,
+                        placement: 'right',
+                        title: title,
+                        container: '#FrmComent'
+                    });
+                })
+                .on('success.form.bv', function (e, data) {
+                    e.preventDefault();
+                    var $form = $(e.target),
+                        $button = $form.data('bootstrapValidator').getSubmitButton();
+                    switch ($button.attr('id')) {
+                        case 'btnGuardar':
+
+                            Guardar();
+
+                            break;
+                    }
+                });
+        }
+
+    });
+</script>

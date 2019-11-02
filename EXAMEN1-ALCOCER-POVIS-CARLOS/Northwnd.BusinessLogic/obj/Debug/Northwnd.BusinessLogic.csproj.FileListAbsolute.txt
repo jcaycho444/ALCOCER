@@ -1,0 +1,16 @@
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.BusinessLogic.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.BusinessLogic.pdb
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.DataAccess.Internal.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.Entity.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.DataAccess.Internal.pdb
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.DataAccess.Internal.dll.config
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.Entity.pdb
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\obj\Debug\Northwnd.BusinessLogic.csprojAssemblyReference.cache
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\obj\Debug\Northwnd.BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\obj\Debug\Northwnd.BusinessLogic.csproj.CopyComplete
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\obj\Debug\Northwnd.BusinessLogic.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\obj\Debug\Northwnd.BusinessLogic.pdb
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.Tool.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.BusinessLogic\bin\Debug\Northwnd.Tool.pdb

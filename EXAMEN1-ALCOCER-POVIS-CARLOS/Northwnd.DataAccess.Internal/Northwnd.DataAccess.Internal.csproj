@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F706747-E34F-4D29-A3B1-89BBE8E96CD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Northwnd.DataAccess.Internal</RootNamespace>
+    <AssemblyName>Northwnd.DataAccess.Internal</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="EF\Categories.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CustomerDemographics.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Customers.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFNorthwnd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFNorthwnd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFNorthwnd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\EFNorthwnd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFNorthwnd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Employees.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Orders.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Orders_comment.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Order_Details.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Products.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Region.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Shippers.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Suppliers.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagrams.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Territories.cs">
+      <DependentUpon>EFNorthwnd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersComentDA.cs" />
+    <Compile Include="OrdersDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EF\EFNorthwnd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EFNorthwnd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EF\EFNorthwnd.edmx.diagram">
+      <DependentUpon>EFNorthwnd.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\EFNorthwnd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFNorthwnd.Context.cs</LastGenOutput>
+      <DependentUpon>EFNorthwnd.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\EFNorthwnd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EFNorthwnd.edmx</DependentUpon>
+      <LastGenOutput>EFNorthwnd.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Northwnd.Entity\Northwnd.Entity.csproj">
+      <Project>{c3fade64-4ee5-4fc7-930e-a5c3bd7ccea6}</Project>
+      <Name>Northwnd.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwnd.Tool\Northwnd.Tool.csproj">
+      <Project>{9a5e7262-140e-4467-ba9d-cb92b67051ae}</Project>
+      <Name>Northwnd.Tool</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

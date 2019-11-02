@@ -1,0 +1,6 @@
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\bin\Debug\Northwnd.Tool.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\bin\Debug\Northwnd.Tool.pdb
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\obj\Debug\Northwnd.Tool.csprojAssemblyReference.cache
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\obj\Debug\Northwnd.Tool.csproj.CoreCompileInputs.cache
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\obj\Debug\Northwnd.Tool.dll
+D:\Proyectos\NET\EXAMEN1-ALCOCER-POVIS-CARLOS\Northwnd.Tool\obj\Debug\Northwnd.Tool.pdb

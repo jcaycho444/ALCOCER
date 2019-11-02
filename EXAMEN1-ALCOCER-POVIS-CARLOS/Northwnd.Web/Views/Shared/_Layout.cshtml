@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="~/Library/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Library/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- text fonts -->
+    <link rel="stylesheet" href="~/Library/assets/css/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="~/Library/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="~/Library/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="~/Library/assets/css/ace-rtl.min.css" />
+    <link href="~/Library/css/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <!-- ace settings handler -->
+    <link href="~/Library/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Library/js/TimePicker/wickedpicker.min.css" rel="stylesheet" />
+    <link href="~/Library/css/alertifyjs/alertify.css" rel="stylesheet" />
+    <link href="~/Library/css/alertifyjs/default.css" rel="stylesheet" />
+
+    <script src="~/Library/assets/js/ace-extra.min.js"></script>
+    <script src="~/Library/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Library/js/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Library/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Library/js/bootstrapValidator.js"></script>
+    <script src="~/Library/js/alertifyjs/alertify.js"></script>
+    <script src="~/Library/assets/js/moment.min.js"></script>
+    <script src="~/Library/assets/js/jquery.maskedinput.min.js"></script>
+    <script src="~/Library/js/TimePicker/wickedpicker.min.js"></script>
+    <style>
+        .sidebar {
+            width: 220px;
+            float: left;
+            position: static;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+            .sidebar + .main-content {
+                margin-left: 220px;
+            }
+
+        .input-sm {
+            height: 26px;
+            line-height: 1.5;
+        }
+
+        select.input-sm {
+            height: 26px;
+            line-height: 30px;
+        }
+
+        .form-group-sm .form-control + .form-control-feedback, .input-group-sm + .form-control-feedback, .input-sm + .form-control-feedback {
+            width: 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        td.details-control {
+            background: url('../../Library/img/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        tr.shown td.details-control {
+            background: url('../../Library/img/details_close.png') no-repeat center center;
+        }
+
+
+        .input-group-addon {
+            padding: 3px 10px;
+        }
+
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-top: 2.5px;
+            margin-bottom: 5px;
+        }
+
+        .input {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .form-control-feedback {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: block;
+            width: 10px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            pointer-events: none;
+        }
+    </style>
+
+
+
+
+
+
+</head>
+<body class="no-skin">
+
+
+    <div id="ModalLoading" style="display: none;">
+        <span>
+            <img src="~/Library/img/loading2.gif" width="25" height="25" /> Cargando ....
+        </span>
+    </div>
+    <div id="navbar" class="navbar navbar-default ace-save-state" style="background: #20a6ff !important">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+
+                <a class="navbar-brand brand-logo" href="#">
+                 LOGO
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle" style="background:#a2aaad !important">
+                            <img id="fotoUsuario" class="nav-user-photo" src="~/Library/img/avatars/avatar2.png" />
+                            <!-- <img class="nav-user-photo" src="~/Library/assets/images/avatars/avatar2.png" alt="" />-->
+                            <span class="user-info">
+                                <small>Bienvenido</small>
+                                <label id="lblNombreUsuario"></label>
+                                <script>
+                                    $("#lblNombreUsuario").text(sessionStorage.getItem("NOMBRES"));
+                                </script>
+                            </span>
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="@Url.Action("Perfil", "Conductor")">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Perfil
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="@Url.Action("Index", "Home")">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Cerrar Sesión
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+
+     
+
+        <div class="main-content">
+            @RenderBody()
+        </div><!-- /.main-content -->
+        @* <script src="~/Library/assets/js/jquery-2.1.4.min.js"></script>*@
+        <script src="~/Library/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="~/Library/assets/js/moment.min.js"></script>
+        @*<script src="~/Library/form/Cliente.js"></script>*@
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <!--[if IE]>
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='~/Library/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="~/Library/assets/js/bootstrap.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="assets/js/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/Library/assets/js/jquery-ui.custom.min.js"></script>
+    <script src="~/Library/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Library/assets/js/jquery.easypiechart.min.js"></script>
+    <script src="~/Library/assets/js/jquery.sparkline.index.min.js"></script>
+    <script src="~/Library/assets/js/jquery.flot.min.js"></script>
+    <script src="~/Library/assets/js/jquery.flot.pie.min.js"></script>
+    <script src="~/Library/assets/js/jquery.flot.resize.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="~/Library/assets/js/ace-elements.min.js"></script>
+    <script src="~/Library/assets/js/ace.min.js"></script>
+    <script src="~/Library/js/jquery.blockUI.js"></script>
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).one('ajaxloadstart.page', function (e) {
+                $tooltip.remove();
+            });
+            $(".btn-anular-frames").on("click", function () {
+                $("#anular_cd").find('iframe').attr('src', $(this).attr("value"))
+            });
+
+           
+        })
+
+
+    </script>
+
+</body>
+</html>
